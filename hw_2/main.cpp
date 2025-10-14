@@ -46,11 +46,11 @@ int main()
 	cin >> input;
 
 	int d, m, y;
-	char dot1, dot2;
+	char firstDotInDate, secondDotInDate;
 	stringstream ss(input);
-	ss >> d >> dot1 >> m >> dot2 >> y;
+	ss >> d >> firstDotInDate >> m >> secondDotInDate >> y;
 
-	if (ss.fail() || dot1 != '.' || dot2 != '.' || !isValidDate(d, m, y))
+	if (ss.fail() || firstDotInDate != '.' || secondDotInDate != '.' || !isValidDate(d, m, y))
 	{
 		cout << "Invalid date!" << endl;
 		return 1;
