@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <ctime>
 #include <iostream>
+#include "date.h"
 
 using namespace std;
 
@@ -45,19 +46,13 @@ int main()
 	cout << "Enter date (dd.mm.yyyy): ";
 	cin >> input;
 
-	int d, m, y;
-	char firstDotInDate, secondDotInDate;
-	stringstream ss(input);
-	ss >> d >> firstDotInDate >> m >> secondDotInDate >> y;
-
-	if (ss.fail() || firstDotInDate != '.' || secondDotInDate != '.' || !isValidDate(d, m, y))
+	Date date;
+	if (!Date::parse(input, date) || !date.isValid())
 	{
 		cout << "Invalid date!" << endl;
 		return 1;
 	}
 
-	int week = weekNumber(d, m, y);
-	cout << "Week number: " << week << endl;
-
+	cout << "Week number: " << date.weekNumber() << endl;
 	return 0;
 }
